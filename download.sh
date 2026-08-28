@@ -3,11 +3,7 @@
 # After this, all builds are fully offline.
 set -eo pipefail
 
-#ANON_VERSION="0.4.9.13-live-1~d12.bookworm+1" 
-#ANON_DEB="anon_${ANON_VERSION}_amd64.deb"
-#ANON_URL="https://deb.en.anyone.tech/pool/main/a/anon/${ANON_DEB}"
 ANON_URL="https://github.com/anyone-protocol/ator-protocol/releases/download/v0.4.10.2/anon_0.4.10.2-live-1.d12.bookworm+1_amd64.deb"
-ANON_SHA256="7e6a17523956e2b2771306bb96b5ad4ce38b1a02e18469b6f1acae77229083bb"
 ANON_SHA256="2073a0eee48aa2bfe7fd7594c19869b722517e6a2971a8be2295a1efd81001fa"
 SIGNING_KEY_URL="https://deb.en.anyone.tech/anon.asc"
 EXPECTED_KEY_ID="DC73B31AA1F797B180A87CBC7571AA42A0CBEFE9"
