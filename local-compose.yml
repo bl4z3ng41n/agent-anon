@@ -1,0 +1,24 @@
+name: agent-anon
+
+services:
+  anon-local:
+    image: agent-anon:latest
+    container_name: agent-anon-local
+    configs:
+      - source: anonrc
+        target: /etc/anon/anonrc
+    network_mode: pasta
+    ports:
+      - "127.0.0.1:9050:9050"
+    restart: unless-stopped
+
+configs:
+  anonrc:
+    content: |
+      AgreeToTerms 1
+      ORPort 0
+      ControlPort 0
+      SocksPort 0.0.0.0:9050
+      Log notice stdout
+      DataDirectory /var/lib/anon
+      NumEntryGuards 8
