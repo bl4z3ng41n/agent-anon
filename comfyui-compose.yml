@@ -1,0 +1,27 @@
+name: agent-anon
+
+services:
+  comfyui:
+    image: agent-anon:latest
+    container_name: agent-anon-comfyui
+    configs:
+      - source: anonrc
+        target: /etc/anon/anonrc
+    network_mode: host
+    restart: unless-stopped
+
+configs:
+  anonrc:
+    content: |
+      AgreeToTerms 1
+
+      ORPort 0
+      ControlPort 0
+      SocksPort 0
+      SocksPolicy reject *
+
+      Log notice stdout
+      DataDirectory /var/lib/anon
+
+      HiddenServiceDir /var/lib/anon/comfyui
+      HiddenServicePort 8188 127.0.0.1:8188
