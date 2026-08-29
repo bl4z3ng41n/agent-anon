@@ -24,6 +24,21 @@ At runtime, the container:
 - Removes cached/state files on startup to ensure a fresh client state.
 - Automatically restarts through the Compose configuration.
 
+### Example
+Exposing a service (e.g. ComfyUI) as a hidden service:
+
+```bash
+podman compose -f comfyui-compose.yml up -d
+```
+
+This runs ComfyUI (listening on `127.0.0.1:8188`) alongside `agent-anon`, using `network_mode: host` so the hidden service can reach the local port. After startup, the onion hostname is available at:
+
+```bash
+podman exec agent-anon-comfyui cat /var/lib/anon/comfyui/hostname
+```
+
+http://<hidden-address>.anyone:8188
+
 ## Security / verification
 
 The build performs several integrity checks before installing the binary:
